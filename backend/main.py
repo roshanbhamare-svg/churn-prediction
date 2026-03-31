@@ -4,7 +4,9 @@ import json
 import joblib
 import numpy as np
 import pandas as pd
+import uvicorn
 from typing import Optional
+
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,6 +18,9 @@ from ml.train import train_all, preprocess, MODELS_DIR
 from database import init_db, get_db, Prediction
 from sqlalchemy.orm import Session
 from fastapi import Depends
+
+
+
 
 app = FastAPI(
     title="Customer Churn Prediction API",
@@ -418,3 +423,10 @@ def delete_prediction(prediction_id: int, db: Session = Depends(get_db)):
     db.delete(pred)
     db.commit()
     return {"message": "Prediction deleted successfully"}
+
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
