@@ -4,6 +4,7 @@ import json
 import joblib
 import numpy as np
 import pandas as pd
+import uvicorn
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks
@@ -418,3 +419,8 @@ def delete_prediction(prediction_id: int, db: Session = Depends(get_db)):
     db.delete(pred)
     db.commit()
     return {"message": "Prediction deleted successfully"}
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)    
