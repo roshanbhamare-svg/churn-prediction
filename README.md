@@ -1,4 +1,4 @@
-# Churn Prediction System
+# Churn Prediction System .
 
 A full-stack **Machine Learning web application** that predicts whether a customer is likely to churn or not.  
 This project combines **ML model training**, a **FastAPI backend**, and a **React frontend** to deliver predictions through a clean and interactive UI.
