@@ -32,6 +32,7 @@ This project combines **ML model training**, a **FastAPI backend**, and a **Reac
 - Logistic Regression
 - XGBoost
 - Pandas
+- Random forest
 - NumPy
 - Scikit-learn
 
